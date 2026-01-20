@@ -1,0 +1,36 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+.next
+out
+dist
+build
+
+# Development
+.env
+.env.local
+.env.*.local
+coverage
+.idea
+.vscode
+*.log
+
+# Git
+.git
+.gitignore
+
+# Tests (not needed in production image)
+__tests__
+vitest.config.mts
+vitest.setup.ts
+
+# Documentation
+*.md
+LICENSE
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore

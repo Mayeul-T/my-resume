@@ -1,0 +1,20 @@
+services:
+  app:
+    image: ghcr.io/${GITHUB_REPOSITORY:-your-username/my-resume}:latest
+    container_name: my-resume
+    restart: unless-stopped
+    ports:
+      - "33000:3000"
+    volumes:
+      - ./storage/assets:/app/public/assets:ro
+    environment:
+      - NODE_ENV=production
+      - BREVO_API_KEY=${BREVO_API_KEY}
+      - BREVO_EMAIL_SENDER=${BREVO_EMAIL_SENDER}
+      - CONTACT_EMAIL=${CONTACT_EMAIL}
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
