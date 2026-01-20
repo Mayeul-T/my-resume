@@ -56,6 +56,11 @@ The resume data is stored in `storage/resume.{locale}.yml` (or `.yaml`). The app
 
 ```typescript
 {
+  meta: {
+    title: string,          // Required - Page title (SEO)
+    description: string     // Required - Page description (SEO)
+  },
+
   hero: {
     name: string,           // Required - Your full name
     title: string,          // Required - Your job title
@@ -69,12 +74,12 @@ The resume data is stored in `storage/resume.{locale}.yml` (or `.yaml`). The app
       email?: string        // Optional - Email address
     }
   },
-  
+
   about: {
     description: string,    // Required - Detailed bio (supports \n for paragraphs)
     highlights: string[]    // Required - Array of key points (min 1)
   },
-  
+
   experience: {
     items: [                // Array of experience items
       {
@@ -90,7 +95,7 @@ The resume data is stored in `storage/resume.{locale}.yml` (or `.yaml`). The app
       }
     ]
   },
-  
+
   skills: {
     categories: [           // Array of skill categories
       {
@@ -104,7 +109,7 @@ The resume data is stored in `storage/resume.{locale}.yml` (or `.yaml`). The app
       }
     ]
   },
-  
+
   education: {
     items: [                // Array of education items
       {
@@ -113,13 +118,13 @@ The resume data is stored in `storage/resume.{locale}.yml` (or `.yaml`). The app
         degree: string,     // Required - Degree type
         field: string,      // Required - Field of study
         location: string,   // Required - City, Country
-        startDate: string,  // Required - Format: "YYYY"
+        startDate?: string, // Optional - Format: "YYYY"
         endDate?: string,   // Optional - Format: "YYYY"
         description?: string// Optional - Additional details
       }
     ]
   },
-  
+
   projects: {
     items: [                // Array of project items
       {
@@ -129,8 +134,18 @@ The resume data is stored in `storage/resume.{locale}.yml` (or `.yaml`). The app
         image?: string,     // Optional - Path to project image
         technologies: string[], // Array of technologies
         liveUrl?: string,   // Optional - Live demo URL
-        githubUrl?: string, // Optional - GitHub repository URL
-        featured?: boolean  // Optional - Featured project flag
+        githubUrl?: string  // Optional - GitHub repository URL
+      }
+    ]
+  },
+
+  hobbies?: {               // Optional section
+    items: [                // Array of hobby items
+      {
+        id: string,         // Required - Unique identifier
+        name: string,       // Required - Hobby name
+        duration?: string,  // Optional - How long you've practiced
+        organizations?: string[] // Optional - Related clubs/organizations
       }
     ]
   }
@@ -140,6 +155,10 @@ The resume data is stored in `storage/resume.{locale}.yml` (or `.yaml`). The app
 ### Minimal Example
 
 ```yaml
+meta:
+  title: Jane Smith - Software Engineer
+  description: Portfolio of Jane Smith, a passionate software engineer.
+
 hero:
   name: Jane Smith
   title: Software Engineer
