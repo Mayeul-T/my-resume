@@ -1,0 +1,52 @@
+nav:
+  about: About
+  experience: Experience
+  skills: Skills
+  education: Education
+  projects: Projects
+  contact: Contact
+
+hero:
+  downloadCv: Download CV
+
+about:
+  title: About Me
+
+experience:
+  title: Experience
+  present: Present
+
+skills:
+  title: Skills
+
+education:
+  title: Education
+
+projects:
+  title: Projects
+  viewProject: View Project
+  viewCode: View Code
+
+hobbies:
+  title: Hobbies
+
+contact:
+  title: Contact
+  subtitle: Let's work together
+  name: Name
+  email: Email
+  message: Message
+  send: Send Message
+  sending: Sending...
+  success: Message sent successfully!
+  error: Something went wrong. Please try again.
+
+footer:
+  rights: All rights reserved.
+
+theme:
+  light: Light mode
+  dark: Dark mode
+
+language:
+  switch: Switch language

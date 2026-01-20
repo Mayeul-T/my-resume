@@ -1,0 +1,52 @@
+nav:
+  about: À propos
+  experience: Expérience
+  skills: Compétences
+  education: Formation
+  projects: Projets
+  contact: Contact
+
+hero:
+  downloadCv: Télécharger CV
+
+about:
+  title: À propos
+
+experience:
+  title: Expérience
+  present: Présent
+
+skills:
+  title: Compétences
+
+education:
+  title: Formation
+
+projects:
+  title: Projets
+  viewProject: Voir le projet
+  viewCode: Voir le code
+
+hobbies:
+  title: Loisirs
+
+contact:
+  title: Contact
+  subtitle: Travaillons ensemble
+  name: Nom
+  email: Email
+  message: Message
+  send: Envoyer
+  sending: Envoi en cours...
+  success: Message envoyé avec succès !
+  error: Une erreur est survenue. Veuillez réessayer.
+
+footer:
+  rights: Tous droits réservés.
+
+theme:
+  light: Mode clair
+  dark: Mode sombre
+
+language:
+  switch: Changer de langue
