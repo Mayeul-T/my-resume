@@ -1,0 +1,170 @@
+hero:
+  name: John Doe
+  title: Full Stack Developer
+  subtitle: Building modern web experiences
+  description: Passionate developer with 5+ years of experience building scalable web applications. I love creating beautiful, performant, and accessible digital experiences.
+  profileImage: /assets/profile.jpg
+  socials:
+    github: https://github.com/johndoe
+    linkedin: https://linkedin.com/in/johndoe
+    twitter: https://twitter.com/johndoe
+    email: john@example.com
+
+about:
+  description: |
+    I'm a passionate Full Stack Developer based in Paris, France. With over 5 years of experience in web development, I specialize in building modern, scalable, and user-friendly applications.
+
+    I enjoy tackling complex problems and turning ideas into reality through clean, efficient code. When I'm not coding, you can find me exploring new technologies, contributing to open source, or sharing knowledge with the developer community.
+  highlights:
+    - 5+ years of professional experience
+    - Expert in React, Node.js, and TypeScript
+    - Strong focus on performance and accessibility
+    - Open source contributor
+
+experience:
+  items:
+    - id: exp-1
+      company: Tech Company
+      position: Senior Full Stack Developer
+      location: Paris, France
+      startDate: "2022-01"
+      description: Leading the development of the company's main product, a SaaS platform serving thousands of users.
+      achievements:
+        - Architected and implemented a new microservices infrastructure reducing deployment time by 60%
+        - Led a team of 4 developers, mentoring junior devs and conducting code reviews
+        - Improved application performance by 40% through optimization and caching strategies
+      technologies:
+        - React
+        - Node.js
+        - TypeScript
+        - PostgreSQL
+        - AWS
+    - id: exp-2
+      company: Startup Inc
+      position: Full Stack Developer
+      location: Lyon, France
+      startDate: "2020-03"
+      endDate: "2021-12"
+      description: Developed and maintained multiple client projects from conception to deployment.
+      achievements:
+        - Built a real-time collaboration tool used by 10,000+ users
+        - Implemented CI/CD pipelines reducing release cycles from weeks to days
+        - Developed a custom CMS that increased content team productivity by 50%
+      technologies:
+        - Vue.js
+        - Express
+        - MongoDB
+        - Docker
+        - GCP
+    - id: exp-3
+      company: Digital Agency
+      position: Junior Web Developer
+      location: Paris, France
+      startDate: "2018-09"
+      endDate: "2020-02"
+      description: Started my professional journey building websites and web applications for various clients.
+      achievements:
+        - Delivered 20+ client projects on time and within budget
+        - Introduced modern frontend practices including component-based architecture
+        - Received 'Rising Star' award for exceptional performance
+      technologies:
+        - JavaScript
+        - PHP
+        - WordPress
+        - MySQL
+        - SASS
+
+skills:
+  categories:
+    - name: Frontend
+      skills:
+        - name: React
+          level: 95
+        - name: TypeScript
+          level: 90
+        - name: Next.js
+          level: 90
+        - name: Vue.js
+          level: 80
+        - name: TailwindCSS
+          level: 95
+    - name: Backend
+      skills:
+        - name: Node.js
+          level: 90
+        - name: Express
+          level: 85
+        - name: PostgreSQL
+          level: 80
+        - name: MongoDB
+          level: 75
+        - name: GraphQL
+          level: 70
+    - name: DevOps & Tools
+      skills:
+        - name: Git
+          level: 95
+        - name: Docker
+          level: 80
+        - name: AWS
+          level: 75
+        - name: CI/CD
+          level: 85
+        - name: Linux
+          level: 80
+
+education:
+  items:
+    - id: edu-1
+      institution: University of Technology
+      degree: Master's Degree
+      field: Computer Science
+      location: Paris, France
+      startDate: "2016"
+      endDate: "2018"
+      description: Specialized in Software Engineering with focus on distributed systems and web technologies.
+    - id: edu-2
+      institution: University of Science
+      degree: Bachelor's Degree
+      field: Computer Science
+      location: Lyon, France
+      startDate: "2013"
+      endDate: "2016"
+      description: Foundation in algorithms, data structures, and programming fundamentals.
+
+projects:
+  items:
+    - id: proj-1
+      title: E-Commerce Platform
+      description: A full-featured e-commerce platform with real-time inventory management, payment processing, and admin dashboard.
+      image: /assets/projects/ecommerce.jpg
+      technologies:
+        - Next.js
+        - Stripe
+        - PostgreSQL
+        - Redis
+      liveUrl: https://example-shop.com
+      githubUrl: https://github.com/johndoe/ecommerce
+      featured: true
+    - id: proj-2
+      title: Task Management App
+      description: A collaborative task management application with real-time updates, drag-and-drop interface, and team features.
+      image: /assets/projects/taskapp.jpg
+      technologies:
+        - React
+        - Socket.io
+        - Node.js
+        - MongoDB
+      liveUrl: https://taskapp.example.com
+      githubUrl: https://github.com/johndoe/taskapp
+      featured: true
+    - id: proj-3
+      title: Developer Portfolio
+      description: A modern, responsive portfolio website built with Next.js and TailwindCSS, featuring dark mode and i18n support.
+      image: /assets/projects/portfolio.jpg
+      technologies:
+        - Next.js
+        - TailwindCSS
+        - TypeScript
+      githubUrl: https://github.com/johndoe/portfolio
+      featured: false

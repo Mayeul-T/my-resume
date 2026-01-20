@@ -1,0 +1,170 @@
+hero:
+  name: John Doe
+  title: Développeur Full Stack
+  subtitle: Créateur d'expériences web modernes
+  description: Développeur passionné avec plus de 5 ans d'expérience dans la création d'applications web scalables. J'aime créer des expériences numériques belles, performantes et accessibles.
+  profileImage: /assets/profile.jpg
+  socials:
+    github: https://github.com/johndoe
+    linkedin: https://linkedin.com/in/johndoe
+    twitter: https://twitter.com/johndoe
+    email: john@example.com
+
+about:
+  description: |
+    Je suis un développeur Full Stack passionné basé à Paris, France. Avec plus de 5 ans d'expérience en développement web, je me spécialise dans la création d'applications modernes, scalables et conviviales.
+
+    J'aime résoudre des problèmes complexes et transformer des idées en réalité grâce à un code propre et efficace. Quand je ne code pas, vous pouvez me trouver en train d'explorer de nouvelles technologies, de contribuer à l'open source ou de partager mes connaissances avec la communauté des développeurs.
+  highlights:
+    - Plus de 5 ans d'expérience professionnelle
+    - Expert en React, Node.js et TypeScript
+    - Fort accent sur la performance et l'accessibilité
+    - Contributeur open source
+
+experience:
+  items:
+    - id: exp-1
+      company: Tech Company
+      position: Développeur Full Stack Senior
+      location: Paris, France
+      startDate: "2022-01"
+      description: Direction du développement du produit principal de l'entreprise, une plateforme SaaS servant des milliers d'utilisateurs.
+      achievements:
+        - Conception et implémentation d'une nouvelle infrastructure microservices réduisant le temps de déploiement de 60%
+        - Direction d'une équipe de 4 développeurs, mentorat des juniors et revues de code
+        - Amélioration des performances de l'application de 40% grâce à l'optimisation et aux stratégies de cache
+      technologies:
+        - React
+        - Node.js
+        - TypeScript
+        - PostgreSQL
+        - AWS
+    - id: exp-2
+      company: Startup Inc
+      position: Développeur Full Stack
+      location: Lyon, France
+      startDate: "2020-03"
+      endDate: "2021-12"
+      description: Développement et maintenance de plusieurs projets clients de la conception au déploiement.
+      achievements:
+        - Création d'un outil de collaboration en temps réel utilisé par plus de 10 000 utilisateurs
+        - Implémentation de pipelines CI/CD réduisant les cycles de release de semaines à jours
+        - Développement d'un CMS personnalisé augmentant la productivité de l'équipe contenu de 50%
+      technologies:
+        - Vue.js
+        - Express
+        - MongoDB
+        - Docker
+        - GCP
+    - id: exp-3
+      company: Digital Agency
+      position: Développeur Web Junior
+      location: Paris, France
+      startDate: "2018-09"
+      endDate: "2020-02"
+      description: Début de mon parcours professionnel en créant des sites web et applications web pour divers clients.
+      achievements:
+        - Livraison de plus de 20 projets clients dans les délais et budgets impartis
+        - Introduction de pratiques frontend modernes incluant l'architecture par composants
+        - Réception du prix 'Étoile Montante' pour performance exceptionnelle
+      technologies:
+        - JavaScript
+        - PHP
+        - WordPress
+        - MySQL
+        - SASS
+
+skills:
+  categories:
+    - name: Frontend
+      skills:
+        - name: React
+          level: 95
+        - name: TypeScript
+          level: 90
+        - name: Next.js
+          level: 90
+        - name: Vue.js
+          level: 80
+        - name: TailwindCSS
+          level: 95
+    - name: Backend
+      skills:
+        - name: Node.js
+          level: 90
+        - name: Express
+          level: 85
+        - name: PostgreSQL
+          level: 80
+        - name: MongoDB
+          level: 75
+        - name: GraphQL
+          level: 70
+    - name: DevOps & Outils
+      skills:
+        - name: Git
+          level: 95
+        - name: Docker
+          level: 80
+        - name: AWS
+          level: 75
+        - name: CI/CD
+          level: 85
+        - name: Linux
+          level: 80
+
+education:
+  items:
+    - id: edu-1
+      institution: Université de Technologie
+      degree: Master
+      field: Informatique
+      location: Paris, France
+      startDate: "2016"
+      endDate: "2018"
+      description: Spécialisation en Génie Logiciel avec focus sur les systèmes distribués et les technologies web.
+    - id: edu-2
+      institution: Université des Sciences
+      degree: Licence
+      field: Informatique
+      location: Lyon, France
+      startDate: "2013"
+      endDate: "2016"
+      description: Fondamentaux en algorithmes, structures de données et programmation.
+
+projects:
+  items:
+    - id: proj-1
+      title: Plateforme E-Commerce
+      description: Une plateforme e-commerce complète avec gestion d'inventaire en temps réel, traitement des paiements et tableau de bord admin.
+      image: /assets/projects/ecommerce.jpg
+      technologies:
+        - Next.js
+        - Stripe
+        - PostgreSQL
+        - Redis
+      liveUrl: https://example-shop.com
+      githubUrl: https://github.com/johndoe/ecommerce
+      featured: true
+    - id: proj-2
+      title: Application de Gestion de Tâches
+      description: Une application collaborative de gestion de tâches avec mises à jour en temps réel, interface drag-and-drop et fonctionnalités d'équipe.
+      image: /assets/projects/taskapp.jpg
+      technologies:
+        - React
+        - Socket.io
+        - Node.js
+        - MongoDB
+      liveUrl: https://taskapp.example.com
+      githubUrl: https://github.com/johndoe/taskapp
+      featured: true
+    - id: proj-3
+      title: Portfolio Développeur
+      description: Un site portfolio moderne et responsive construit avec Next.js et TailwindCSS, avec mode sombre et support i18n.
+      image: /assets/projects/portfolio.jpg
+      technologies:
+        - Next.js
+        - TailwindCSS
+        - TypeScript
+      githubUrl: https://github.com/johndoe/portfolio
+      featured: false
