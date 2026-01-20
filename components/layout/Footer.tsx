@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="border-t border-border bg-card">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-center px-6">
         <p className="text-sm text-muted-foreground">
-          &copy; {currentYear} Portfolio. {t("rights")}
+          &copy; {currentYear} My Resume. {t("rights")}
         </p>
       </div>
     </footer>
