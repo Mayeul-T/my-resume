@@ -1,0 +1,67 @@
+{
+  "name": "my-resume",
+  "version": "1.0.0",
+  "description": "Personal portfolio and resume website",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "pnpm run copy-assets && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "copy-assets": "node scripts/copy-assets.mjs",
+    "setup": "cp -r storage.example storage && cp .env.example .env.local"
+  },
+  "keywords": [
+    "portfolio",
+    "resume",
+    "nextjs"
+  ],
+  "author": "",
+  "license": "GPL-3.0",
+  "packageManager": "pnpm@10.28.0",
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions",
+    "not dead"
+  ],
+  "dependencies": {
+    "@getbrevo/brevo": "^3.0.1",
+    "js-yaml": "^4.1.1",
+    "lucide-react": "^0.562.0",
+    "next": "^16.1.2",
+    "next-intl": "^4.7.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "server-only": "^0.0.1",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^25.0.9",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/coverage-v8": "4.0.17",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.2",
+    "jsdom": "^27.4.0",
+    "postcss": "^8.5.6",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "vite-tsconfig-paths": "^6.0.4",
+    "vitest": "^4.0.17"
+  }
+}
