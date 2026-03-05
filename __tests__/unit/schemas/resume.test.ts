@@ -147,6 +147,41 @@ describe('HeroSchema', () => {
     })
     expect(result.success).toBe(true)
   })
+
+  it('optional cvUrl can be omitted', () => {
+    const result = HeroSchema.safeParse({
+      name: 'Name',
+      title: 'Title',
+      subtitle: 'Subtitle',
+      description: 'Desc',
+      socials: {},
+    })
+    expect(result.success).toBe(true)
+  })
+
+  it('valid cvUrl passes', () => {
+    const result = HeroSchema.safeParse({
+      name: 'Name',
+      title: 'Title',
+      subtitle: 'Subtitle',
+      description: 'Desc',
+      cvUrl: 'https://example.com/cv.pdf',
+      socials: {},
+    })
+    expect(result.success).toBe(true)
+  })
+
+  it('invalid cvUrl fails', () => {
+    const result = HeroSchema.safeParse({
+      name: 'Name',
+      title: 'Title',
+      subtitle: 'Subtitle',
+      description: 'Desc',
+      cvUrl: 'not-a-url',
+      socials: {},
+    })
+    expect(result.success).toBe(false)
+  })
 })
 
 describe('AboutSchema', () => {
