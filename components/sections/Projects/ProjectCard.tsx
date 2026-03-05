@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { TiltCard } from "@/components/ui/TiltCard";
 import { Projects as ProjectsData } from "@/lib/schemas/resume";
 import { ExternalLink, Github } from "lucide-react";
+import { blurScale, viewportOnce } from "@/lib/motion";
 
 interface ProjectCardProps {
   project: ProjectsData["items"][0];
@@ -13,17 +15,17 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
-  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>();
   const t = useTranslations("projects");
 
   return (
-    <div
-      ref={ref}
-      className={`animate-on-scroll scale ${isVisible ? "is-visible" : ""}`}
-      style={{ animationDelay: `${index * 150}ms` }}
+    <motion.div
+      variants={blurScale}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportOnce}
     >
-      <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-background transition-all duration-500 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
-        {/* Image at top with gradient fading to content */}
+      <TiltCard className="group flex h-full flex-col overflow-hidden">
+        {/* Image */}
         <div className="relative overflow-hidden">
           {project.image ? (
             <Image
@@ -37,12 +39,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           ) : (
             <div className="aspect-[16/9] w-full bg-gradient-to-br from-primary/20 via-accent/20 to-primary/10" />
           )}
-
-          {/* Gradient from bottom (white/background) to transparent */}
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/60 to-transparent" />
         </div>
 
-        {/* Content below image */}
+        {/* Content */}
         <div className="p-6 md:p-8 pt-2 md:pt-4">
           <h3 className="mb-2 text-2xl font-bold text-foreground md:text-3xl">
             {project.title}
@@ -51,7 +51,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {project.description}
           </p>
 
-          {/* Technologies */}
           <div className="mb-6 flex flex-wrap gap-2">
             {project.technologies.slice(0, 5).map((tech) => (
               <Badge key={tech}>{tech}</Badge>
@@ -61,33 +60,36 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             )}
           </div>
 
-          {/* Links */}
           <div className="flex gap-3">
             {project.liveUrl && (
-              <a
+              <motion.a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-shadow hover:shadow-xl hover:shadow-primary/30"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
               >
                 <ExternalLink className="h-4 w-4" />
                 {t("viewProject")}
-              </a>
+              </motion.a>
             )}
             {project.githubUrl && (
-              <a
+              <motion.a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-5 py-2.5 text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:border-foreground/20 hover:bg-background"
+                className="inline-flex items-center gap-2 rounded-full glass px-5 py-2.5 text-sm font-medium text-foreground"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
               >
                 <Github className="h-4 w-4" />
                 {t("viewCode")}
-              </a>
+              </motion.a>
             )}
           </div>
         </div>
-      </div>
-    </div>
+      </TiltCard>
+    </motion.div>
   );
 }

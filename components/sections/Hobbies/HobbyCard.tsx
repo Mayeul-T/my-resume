@@ -1,8 +1,9 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
 import { Hobbies as HobbiesData } from "@/lib/schemas/resume";
 import { Music, Mic, Clock } from "lucide-react";
+import { blurIn } from "@/lib/motion";
 
 const hobbyIcons: Record<string, React.ReactNode> = {
   "hobby-1": <Music className="h-5 w-5" />,
@@ -15,22 +16,15 @@ interface HobbyCardProps {
 }
 
 export function HobbyCard({ hobby, index }: HobbyCardProps) {
-  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>();
-
   return (
-    <div
-      ref={ref}
-      className={`animate-on-scroll ${isVisible ? "is-visible" : ""}`}
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
-      <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg">
-        {/* Subtle gradient background on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    <motion.div variants={blurIn}>
+      <div className="group relative h-full overflow-hidden rounded-2xl glass glass-hover p-6">
+        {/* Subtle gradient on hover */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
 
         <div className="relative z-10">
-          {/* Header with icon */}
           <div className="mb-4 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 text-primary transition-all duration-300 group-hover:from-primary/20 group-hover:to-accent/20">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-accent/15 text-primary transition-all duration-300 group-hover:from-primary/25 group-hover:to-accent/25 group-hover:shadow-lg group-hover:shadow-primary/10">
               {hobbyIcons[hobby.id] || <Music className="h-5 w-5" />}
             </div>
             <div>
@@ -44,7 +38,6 @@ export function HobbyCard({ hobby, index }: HobbyCardProps) {
             </div>
           </div>
 
-          {/* Organizations */}
           {hobby.organizations && hobby.organizations.length > 0 && (
             <ul className="space-y-1.5">
               {hobby.organizations.map((org, idx) => (
@@ -60,6 +53,6 @@ export function HobbyCard({ hobby, index }: HobbyCardProps) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

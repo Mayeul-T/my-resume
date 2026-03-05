@@ -13,7 +13,7 @@ export function Skills({ data }: SkillsProps) {
   const t = useTranslations("skills");
 
   return (
-    <Section id="skills" title={t("title")} className="bg-card">
+    <Section id="skills" title={t("title")}>
       <div className="space-y-16">
         {data.categories.map((category, categoryIndex) => (
           <SkillCategory

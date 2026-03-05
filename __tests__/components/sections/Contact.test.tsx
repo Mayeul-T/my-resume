@@ -36,11 +36,30 @@ vi.mock('@/components/ui/Section', () => ({
   ),
 }))
 
-vi.mock('@/components/ui/AnimatedElement', () => ({
-  AnimatedElement: ({ children }: { children: React.ReactNode }) => (
-    <div>{children}</div>
-  ),
-}))
+vi.mock('framer-motion', async () => {
+  const React = await import('react');
+  const componentCache = new Map();
+  const motionHandler: ProxyHandler<object> = {
+    get: (_target, prop: string) => {
+      if (!componentCache.has(prop)) {
+        const MotionComponent = React.forwardRef(function MotionComponent(props: Record<string, unknown>, ref: React.Ref<unknown>) {
+          const { variants, initial, animate, whileInView, viewport, transition, whileHover, whileTap, exit, style, ...htmlProps } = props;
+          return React.createElement(prop, { ...htmlProps, style, ref }, props.children as React.ReactNode);
+        });
+        MotionComponent.displayName = `motion.${prop}`;
+        componentCache.set(prop, MotionComponent);
+      }
+      return componentCache.get(prop);
+    },
+  };
+  return {
+    motion: new Proxy({}, motionHandler),
+    AnimatePresence: ({ children }: { children: React.ReactNode }) => children,
+    useScroll: () => ({ scrollYProgress: { get: () => 0 } }),
+    useSpring: (v: unknown) => v,
+    useTransform: () => ({ get: () => 0 }),
+  };
+})
 
 import { sendContactEmail } from '@/lib/actions/contact'
 

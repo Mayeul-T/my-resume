@@ -13,7 +13,7 @@ export function Projects({ data }: ProjectsProps) {
   const t = useTranslations("projects");
 
   return (
-    <Section id="projects" title={t("title")} className="bg-card">
+    <Section id="projects" title={t("title")}>
       <div className="grid gap-8 lg:grid-cols-2">
         {data.items.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />

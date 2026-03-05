@@ -1,8 +1,9 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
 import { Skills as SkillsData } from "@/lib/schemas/resume";
 import { CircularSkill } from "./CircularSkill";
+import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 interface SkillCategoryProps {
   category: SkillsData["categories"][0];
@@ -10,28 +11,31 @@ interface SkillCategoryProps {
 }
 
 export function SkillCategory({ category, index }: SkillCategoryProps) {
-  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>();
-
   return (
-    <div
-      ref={ref}
-      className={`animate-on-scroll ${isVisible ? "is-visible" : ""}`}
-      style={{ animationDelay: `${index * 100}ms` }}
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportOnce}
     >
       <h3 className="mb-8 text-center text-xl font-bold text-foreground">
         {category.name}
       </h3>
 
-      <div className="flex flex-wrap justify-center gap-8 md:justify-evenly md:gap-6 lg:gap-8">
-        {category.skills.map((skill, skillIndex) => (
+      <motion.div
+        className="flex flex-wrap justify-center gap-8 md:justify-evenly md:gap-6 lg:gap-8"
+        variants={stagger(0.08, index * 0.1)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+      >
+        {category.skills.map((skill) => (
           <CircularSkill
             key={skill.name}
             skill={skill}
-            isVisible={isVisible}
-            delay={(index * 100) + (skillIndex * 80)}
           />
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
