@@ -24,6 +24,7 @@ export const HeroSchema = z.object({
     (val) => val.startsWith('/') || val.startsWith('http'),
     'Must be an absolute path or URL'
   ).optional(),
+  cvUrl: z.string().url().optional(),
   socials: SocialsSchema,
 });
 
