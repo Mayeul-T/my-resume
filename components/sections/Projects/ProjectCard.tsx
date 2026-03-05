@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { Projects as ProjectsData } from "@/lib/schemas/resume";
 import { ExternalLink, Github } from "lucide-react";
-import { blurScale, viewportOnce } from "@/lib/motion";
+import { blurScale, viewportOnce, spring } from "@/lib/motion";
 
 interface ProjectCardProps {
   project: ProjectsData["items"][0];
@@ -34,7 +34,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               width={800}
               height={600}
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="h-auto w-full transition-transform duration-700 group-hover:scale-105"
+              className="h-auto w-full transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
             <div className="aspect-[16/9] w-full bg-gradient-to-br from-primary/20 via-accent/20 to-primary/10" />
@@ -66,6 +66,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-shadow hover:shadow-xl hover:shadow-primary/30"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
+                transition={spring}
               >
                 <ExternalLink className="h-4 w-4" />
                 {t("viewProject")}
@@ -79,6 +80,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 className="inline-flex items-center gap-2 rounded-full glass px-5 py-2.5 text-sm font-medium text-foreground"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
+                transition={spring}
               >
                 <Github className="h-4 w-4" />
                 {t("viewCode")}

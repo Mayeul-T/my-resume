@@ -94,7 +94,7 @@ body {
 }
 
 .glass-hover {
-  transition: box-shadow 0.4s ease, transform 0.4s ease, background 0.4s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
 }
 
 .glass-hover:hover {
@@ -148,7 +148,7 @@ body {
   background: conic-gradient(from var(--angle), var(--primary), var(--accent), var(--primary));
   animation: rotate-gradient 6s linear infinite;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
 }
 
 .gradient-border:hover::before {

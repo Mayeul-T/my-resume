@@ -48,7 +48,7 @@ export function HeaderClient({ navItems, logo }: HeaderClientProps) {
             <a
               key={item.key}
               href={item.href}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:text-foreground hover:bg-white/15 dark:hover:bg-white/8"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:text-foreground hover:bg-white/20 dark:hover:bg-white/10"
             >
               {item.label}
             </a>
@@ -62,7 +62,7 @@ export function HeaderClient({ navItems, logo }: HeaderClientProps) {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg glass text-foreground transition-all duration-300 hover:bg-white/20 dark:hover:bg-white/8 md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg glass text-foreground transition-all duration-300 hover:bg-white/20 dark:hover:bg-white/10 md:hidden"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -99,7 +99,7 @@ export function HeaderClient({ navItems, logo }: HeaderClientProps) {
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   variants={fadeUp}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/15 dark:hover:bg-white/8 hover:text-foreground"
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/20 dark:hover:bg-white/10 hover:text-foreground"
                 >
                   {item.label}
                 </motion.a>

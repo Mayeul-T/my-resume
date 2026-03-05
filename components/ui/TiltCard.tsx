@@ -47,7 +47,7 @@ export function TiltCard({ children, className = "" }: TiltCardProps) {
     >
       {/* Cursor-following spotlight */}
       <motion.div
-        className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background: useTransform(
             [spotlightX, spotlightY],

@@ -150,8 +150,8 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl glass glass-hover px-7 py-3.5 font-semibold text-foreground"
-                whileHover={{ scale: 1.15, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
                 transition={spring}
               >
                 {downloadCvLabel}

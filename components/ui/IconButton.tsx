@@ -23,7 +23,7 @@ export function IconButton({
       rel={external ? "noopener noreferrer" : undefined}
       aria-label={label}
       className="flex h-11 w-11 items-center justify-center rounded-xl glass glass-hover text-muted-foreground hover:text-foreground"
-      whileHover={{ scale: 1.15, y: -2 }}
+      whileHover={{ scale: 1.1, y: -2 }}
       whileTap={{ scale: 0.95 }}
       transition={spring}
     >

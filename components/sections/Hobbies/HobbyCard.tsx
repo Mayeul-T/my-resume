@@ -20,7 +20,7 @@ export function HobbyCard({ hobby, index }: HobbyCardProps) {
     <motion.div variants={blurIn}>
       <div className="group relative h-full overflow-hidden rounded-2xl glass glass-hover p-6">
         {/* Subtle gradient on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
         <div className="relative z-10">
           <div className="mb-4 flex items-center gap-3">
@@ -43,7 +43,7 @@ export function HobbyCard({ hobby, index }: HobbyCardProps) {
               {hobby.organizations.map((org, idx) => (
                 <li
                   key={idx}
-                  className="flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-200 group-hover:text-foreground/80"
+                  className="flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground/80"
                 >
                   <span className="h-1 w-1 rounded-full bg-primary/50" />
                   {org}
