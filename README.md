@@ -67,6 +67,7 @@ The resume data is stored in `storage/resume.{locale}.yml` (or `.yaml`). The app
     subtitle: string,       // Required - A short tagline
     description: string,    // Required - Brief introduction
     profileImage?: string,  // Optional - Path to profile image
+    cvUrl?: string,         // Optional - URL to downloadable CV (PDF or HTML)
     socials: {
       github?: string,      // Optional - GitHub URL
       linkedin?: string,    // Optional - LinkedIn URL
@@ -221,9 +222,21 @@ my-resume/
 │   ├── i18n/            # Internationalization config
 │   └── schemas/         # Zod validation schemas
 ├── messages/            # UI translations
+├── public/
+│   ├── cv.html          # Printable CV (French)
+│   └── cv-en.html       # Printable CV (English)
 ├── storage/             # Resume data (gitignored)
 └── storage.example/     # Template files
 ```
+
+## Printable CV
+
+Static HTML versions of the CV are available in `public/` and linked from the hero section's "Download CV" button:
+
+- **French:** `/cv.html`
+- **English:** `/cv-en.html`
+
+These are standalone A4 pages designed for printing (Ctrl+P) or saving as PDF. They use the same color palette and Inter font as the website. Make sure to enable "Background graphics" in your browser's print dialog to preserve colors.
 
 ## License
 
