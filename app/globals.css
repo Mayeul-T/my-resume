@@ -109,6 +109,11 @@ body {
   background-clip: text;
 }
 
+.text-gradient::selection,
+.text-gradient *::selection {
+  -webkit-text-fill-color: white;
+}
+
 /* ===== NOISE TEXTURE OVERLAY ===== */
 .noise::before {
   content: "";
