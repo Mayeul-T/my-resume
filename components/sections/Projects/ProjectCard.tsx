@@ -52,12 +52,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </p>
 
           <div className="mb-6 flex flex-wrap gap-2">
-            {project.technologies.slice(0, 5).map((tech) => (
+            {project.technologies.map((tech) => (
               <Badge key={tech}>{tech}</Badge>
             ))}
-            {project.technologies.length > 5 && (
-              <Badge variant="outline">+{project.technologies.length - 5}</Badge>
-            )}
           </div>
 
           <div className="flex gap-3">
