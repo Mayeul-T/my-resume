@@ -21,39 +21,47 @@
 
 /* ===== CSS VARIABLES ===== */
 :root {
-  --bg: #ffffff;
-  --fg: #0a0a0a;
-  --muted: #737373;
-  --muted-fg: #525252;
-  --border: #e5e5e5;
-  --card: #fafafa;
-  --card-fg: #0a0a0a;
-  --primary: #2563eb;
+  --primary: #004aad;
   --primary-fg: #ffffff;
-  --secondary: #f5f5f5;
-  --secondary-fg: #171717;
-  --accent: #6366f1;
+  --accent: #7c3aed;
   --accent-fg: #ffffff;
+  --bg: #eef2f7;
+  --fg: #0a0a0a;
+  --card: rgba(255, 255, 255, 0.55);
+  --card-fg: #0a0a0a;
+  --border: rgba(255, 255, 255, 0.65);
+  --muted: #64748b;
+  --muted-fg: #475569;
+  --secondary: rgba(255, 255, 255, 0.45);
+  --secondary-fg: #1e293b;
   --success: oklch(0.72 0.19 142);
   --error: oklch(0.63 0.24 29);
+
+  --glass-blur: 24px;
+  --glass-shadow: 0 8px 32px rgba(0, 74, 173, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --glass-shadow-hover: 0 16px 48px rgba(0, 74, 173, 0.14), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --glass-glow: 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 .dark {
-  --bg: #0a0a0a;
-  --fg: #fafafa;
-  --muted: #a3a3a3;
-  --muted-fg: #d4d4d4;
-  --border: #262626;
-  --card: #171717;
-  --card-fg: #fafafa;
-  --primary: #3b82f6;
+  --primary: #4d90d0;
   --primary-fg: #ffffff;
-  --secondary: #262626;
-  --secondary-fg: #fafafa;
-  --accent: #818cf8;
+  --accent: #a78bfa;
   --accent-fg: #ffffff;
-  --success: oklch(0.75 0.18 142);
-  --error: oklch(0.65 0.22 29);
+  --bg: #06090f;
+  --fg: #f0f4f8;
+  --card: rgba(255, 255, 255, 0.04);
+  --card-fg: #f0f4f8;
+  --border: rgba(255, 255, 255, 0.08);
+  --muted: #94a3b8;
+  --muted-fg: #cbd5e1;
+  --secondary: rgba(255, 255, 255, 0.06);
+  --secondary-fg: #f0f4f8;
+
+  --glass-blur: 24px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --glass-shadow-hover: 0 16px 48px rgba(77, 144, 208, 0.15), 0 4px 12px rgba(0, 0, 0, 0.3);
+  --glass-glow: 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 /* ===== BASE STYLES ===== */
@@ -66,7 +74,7 @@
 body {
   background-color: var(--bg);
   color: var(--fg);
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -76,127 +84,75 @@ body {
   color: var(--primary-fg);
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ===== GLASSMORPHISM ===== */
+.glass {
+  background: var(--card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+  box-shadow: var(--glass-glow), var(--glass-shadow);
 }
 
-@keyframes fade-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.glass-hover {
+  transition: box-shadow 0.4s ease, transform 0.4s ease, background 0.4s ease;
 }
 
-@keyframes fade-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.glass-hover:hover {
+  box-shadow: var(--glass-glow), var(--glass-shadow-hover);
 }
 
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* ===== GRADIENT TEXT ===== */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* ===== NOISE TEXTURE OVERLAY ===== */
+.noise::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+/* ===== ANIMATED GRADIENT BORDER ===== */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
-@keyframes bounce-subtle {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(4px);
-  }
+.gradient-border {
+  position: relative;
+  z-index: 0;
 }
 
-/* JS-based scroll animations (fallback) */
-.animate-on-scroll {
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle), var(--primary), var(--accent), var(--primary));
+  animation: rotate-gradient 6s linear infinite;
   opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.animate-on-scroll.is-visible {
-  animation: fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.gradient-border:hover::before {
+  opacity: 1;
 }
 
-.animate-on-scroll.from-left.is-visible {
-  animation: fade-in-left 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+@keyframes rotate-gradient {
+  to { --angle: 360deg; }
 }
-
-.animate-on-scroll.from-right.is-visible {
-  animation: fade-in-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-on-scroll.scale.is-visible {
-  animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* CSS-only scroll-driven animations (modern browsers) */
-@supports (animation-timeline: view()) {
-  .animate-on-scroll-css {
-    animation: fade-in-up linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 30%;
-  }
-
-  .animate-on-scroll-css.from-left {
-    animation-name: fade-in-left;
-  }
-
-  .animate-on-scroll-css.from-right {
-    animation-name: fade-in-right;
-  }
-
-  .animate-on-scroll-css.scale {
-    animation-name: scale-in;
-  }
-}
-
-/* Fallback for browsers without scroll-driven animations */
-@supports not (animation-timeline: view()) {
-  .animate-on-scroll-css {
-    opacity: 1;
-  }
-}
-
-/* Hero section staggered animations */
-.animate-hero-1 { animation: fade-in-up 0.6s ease-out 0.2s forwards; opacity: 0; }
-.animate-hero-2 { animation: fade-in-up 0.6s ease-out 0.4s forwards; opacity: 0; }
-.animate-hero-3 { animation: fade-in-up 0.6s ease-out 0.6s forwards; opacity: 0; }
-.animate-hero-4 { animation: fade-in-up 0.6s ease-out 0.8s forwards; opacity: 0; }
-.animate-hero-5 { animation: fade-in-up 0.6s ease-out 1s forwards; opacity: 0; }
-.animate-hero-6 { animation: fade-in-up 0.6s ease-out 1.2s forwards; opacity: 0; }
-.animate-hero-fade { animation: fade-in 0.6s ease-out 1.5s forwards; opacity: 0; }
 
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
