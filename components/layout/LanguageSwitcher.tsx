@@ -15,15 +15,15 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div className="flex items-center gap-1 rounded-lg border border-border bg-card p-1">
+    <div className="flex items-center gap-1 rounded-lg glass p-1">
       {routing.locales.map((loc) => (
         <button
           key={loc}
           onClick={() => switchLocale(loc)}
-          className={`rounded-md px-2.5 py-1 text-sm font-medium uppercase transition-all duration-normal ${
+          className={`cursor-pointer rounded-md px-2.5 py-1 text-sm font-medium uppercase transition-all duration-300 ${
             locale === loc
-              ? "bg-primary text-primary-foreground"
-              : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+              ? "bg-primary text-primary-foreground shadow-sm"
+              : "text-muted-foreground hover:bg-white/20 dark:hover:bg-white/10 hover:text-foreground"
           }`}
           aria-label={t("switch")}
           aria-current={locale === loc ? "true" : undefined}

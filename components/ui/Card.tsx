@@ -5,9 +5,9 @@ interface CardProps {
 }
 
 export function Card({ children, className = "", hover = false }: CardProps) {
-  const baseClasses = "rounded-2xl border border-border bg-card p-6";
+  const baseClasses = "rounded-2xl glass p-6";
   const hoverClasses = hover
-    ? "transition-all duration-normal hover:border-primary/50 hover:shadow-lg"
+    ? "transition-all duration-300 hover:bg-white/20 dark:hover:bg-white/10 hover:shadow-lg hover:shadow-primary/5"
     : "";
 
   return (

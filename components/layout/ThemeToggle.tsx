@@ -18,11 +18,10 @@ export function ThemeToggle() {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
-  // Avoid hydration mismatch by rendering a placeholder until mounted
   if (!mounted) {
     return (
       <button
-        className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card text-foreground transition-all duration-normal hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className="relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg glass text-foreground transition-all duration-300 hover:bg-white/20 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         aria-label={t("dark")}
       >
         <span className="h-5 w-5" />
@@ -33,17 +32,17 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card text-foreground transition-all duration-normal hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      className="relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg glass text-foreground transition-all duration-300 hover:bg-white/20 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       aria-label={resolvedTheme === "light" ? t("dark") : t("light")}
     >
       <Sun
-        className={`h-5 w-5 transition-all duration-normal ${
+        className={`h-5 w-5 transition-all duration-300 ${
           resolvedTheme === "dark" ? "rotate-90 scale-0" : "rotate-0 scale-100"
         }`}
         strokeWidth={2}
       />
       <Moon
-        className={`absolute h-5 w-5 transition-all duration-normal ${
+        className={`absolute h-5 w-5 transition-all duration-300 ${
           resolvedTheme === "dark" ? "rotate-0 scale-100" : "-rotate-90 scale-0"
         }`}
         strokeWidth={2}

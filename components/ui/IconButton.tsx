@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { spring } from "@/lib/motion";
+
 interface IconButtonProps {
   href: string;
   icon: React.ReactNode;
@@ -12,14 +17,17 @@ export function IconButton({
   external = true,
 }: IconButtonProps) {
   return (
-    <a
+    <motion.a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       aria-label={label}
-      className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-all duration-normal hover:scale-110 hover:bg-secondary hover:text-foreground"
+      className="flex h-11 w-11 items-center justify-center rounded-xl glass glass-hover text-muted-foreground hover:text-foreground"
+      whileHover={{ scale: 1.15, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+      transition={spring}
     >
       {icon}
-    </a>
+    </motion.a>
   );
 }
