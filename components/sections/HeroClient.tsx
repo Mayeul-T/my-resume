@@ -44,8 +44,6 @@ function AnimatedText({ text, className }: { text: string; className?: string })
 
 export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
   const { scrollY } = useScroll();
-  const blob1Y = useTransform(scrollY, [0, 600], [0, -100]);
-  const blob2Y = useTransform(scrollY, [0, 600], [0, -150]);
   const contentOpacity = useTransform(scrollY, [0, 400], [1, 0]);
   const contentScale = useTransform(scrollY, [0, 400], [1, 0.95]);
 
@@ -53,14 +51,8 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
     <section className="relative flex min-h-dvh flex-col overflow-hidden px-6 pt-16">
       {/* Hero-specific background blobs */}
       <div className="absolute inset-0 -z-10">
-        <motion.div
-          className="absolute left-[10%] top-[15%] h-[500px] w-[500px] rounded-full bg-primary/20 blur-[140px]"
-          style={{ y: blob1Y }}
-        />
-        <motion.div
-          className="absolute right-[10%] bottom-[20%] h-[400px] w-[400px] rounded-full bg-accent/20 blur-[120px]"
-          style={{ y: blob2Y }}
-        />
+        <div className="absolute left-[10%] top-[15%] h-[500px] w-[500px] rounded-full bg-primary/20 blur-[140px]" />
+        <div className="absolute right-[10%] bottom-[20%] h-[400px] w-[400px] rounded-full bg-accent/20 blur-[120px]" />
       </div>
 
       {/* Main content with scroll fade-out */}
