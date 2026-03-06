@@ -6,7 +6,6 @@ import { routing, parseLocale } from "@/lib/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { HtmlLang } from "@/components/layout/HtmlLang";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { getResumeData } from "@/lib/data/resume";
 import { BackgroundDecorations } from "@/components/layout/BackgroundDecorations";
 
@@ -57,7 +56,6 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <HtmlLang />
-      <ScrollProgress />
       <div className="noise relative flex min-h-screen flex-col">
         <BackgroundDecorations />
         <Header />
