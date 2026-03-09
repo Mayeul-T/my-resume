@@ -3,15 +3,25 @@
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { routing, Locale } from "@/lib/i18n/routing";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 export function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations("language");
+  const [activeLocale, setActiveLocale] = useState<Locale>(locale as Locale);
 
   const switchLocale = (newLocale: Locale) => {
-    router.replace(pathname, { locale: newLocale });
+    if (newLocale === activeLocale) return;
+    setActiveLocale(newLocale);
+  };
+
+  const onSlideComplete = () => {
+    if (activeLocale !== locale) {
+      router.replace(pathname, { locale: activeLocale });
+    }
   };
 
   return (
@@ -20,15 +30,23 @@ export function LanguageSwitcher() {
         <button
           key={loc}
           onClick={() => switchLocale(loc)}
-          className={`cursor-pointer rounded-md px-2.5 py-1 text-sm font-medium uppercase transition-all duration-300 ${
-            locale === loc
-              ? "bg-primary text-primary-foreground shadow-sm"
+          className={`relative cursor-pointer rounded-md px-2.5 py-1 text-sm font-medium uppercase transition-colors duration-300 ${
+            activeLocale === loc
+              ? "text-primary-foreground"
               : "text-muted-foreground hover:bg-white/20 dark:hover:bg-white/10 hover:text-foreground"
           }`}
           aria-label={t("switch")}
-          aria-current={locale === loc ? "true" : undefined}
+          aria-current={activeLocale === loc ? "true" : undefined}
         >
-          {loc}
+          {activeLocale === loc && (
+            <motion.span
+              layoutId="locale-indicator"
+              className="absolute inset-0 rounded-md bg-primary shadow-sm"
+              transition={{ type: "spring", bounce: 0.15, duration: 0.4 }}
+              onLayoutAnimationComplete={onSlideComplete}
+            />
+          )}
+          <span className="relative z-10">{loc}</span>
         </button>
       ))}
     </div>
