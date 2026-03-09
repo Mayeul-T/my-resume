@@ -61,7 +61,7 @@ export function Contact() {
 
         <motion.form
           onSubmit={handleSubmit}
-          className="space-y-6 rounded-2xl glass p-6 md:p-8"
+          className="space-y-6 rounded-2xl glass-frost p-6 md:p-8"
           variants={stagger(0.1, 0.1)}
           initial="hidden"
           whileInView="visible"

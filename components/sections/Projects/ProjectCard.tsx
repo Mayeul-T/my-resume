@@ -37,17 +37,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               className="h-auto w-full transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
-            <div className="aspect-[16/9] w-full bg-gradient-to-br from-primary/20 via-accent/20 to-primary/10" />
+            <div className="from-primary/20 via-accent/20 to-primary/10 aspect-video w-full bg-linear-to-br" />
           )}
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/60 to-transparent" />
+          <div className="from-background/60 absolute inset-x-0 bottom-0 h-24 bg-linear-to-t to-transparent" />
         </div>
 
         {/* Content */}
-        <div className="p-6 md:p-8 pt-2 md:pt-4">
-          <h3 className="mb-2 text-2xl font-bold text-foreground md:text-3xl">
+        <div className="p-6 pt-2 md:p-8 md:pt-4">
+          <h3 className="text-foreground mb-2 text-2xl font-bold md:text-3xl">
             {project.title}
           </h3>
-          <p className="mb-4 max-w-xl text-base text-muted-foreground">
+          <p className="text-muted-foreground mb-4 max-w-xl text-base">
             {project.description}
           </p>
 
@@ -63,7 +63,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-shadow hover:shadow-xl hover:shadow-primary/30"
+                className="from-primary to-accent shadow-primary/20 hover:shadow-primary/30 inline-flex items-center gap-2 rounded-full bg-gradient-to-r px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-shadow hover:shadow-xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
                 transition={spring}
@@ -77,7 +77,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full glass px-5 py-2.5 text-sm font-medium text-foreground"
+                className="glass text-foreground inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
                 transition={spring}

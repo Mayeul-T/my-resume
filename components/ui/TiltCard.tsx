@@ -35,7 +35,7 @@ export function TiltCard({ children, className = "" }: TiltCardProps) {
   return (
     <motion.div
       ref={ref}
-      className={`relative overflow-hidden rounded-2xl glass glass-hover ${className}`}
+      className={`relative overflow-hidden rounded-2xl glass-frost glass-hover ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
