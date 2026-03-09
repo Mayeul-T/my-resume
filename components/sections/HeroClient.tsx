@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { IconButton, GithubIcon, LinkedinIcon, XIcon } from "@/components/ui";
+import { motion } from "framer-motion";
+import { GithubIcon, LinkedinIcon } from "@/components/ui";
 import { Hero as HeroData } from "@/lib/schemas/resume";
 import { Download, Mail, ChevronDown } from "lucide-react";
-import { stagger, fadeUp, spring } from "@/lib/motion";
+import { stagger, fadeUp } from "@/lib/motion";
+import { LinkButton } from "@/components/ui/Button/LinkButton";
 
 interface HeroClientProps {
   data: HeroData;
@@ -13,7 +14,13 @@ interface HeroClientProps {
 }
 
 // Split text into individual characters for staggered animation
-function AnimatedText({ text, className }: { text: string; className?: string }) {
+function AnimatedText({
+  text,
+  className,
+}: {
+  text: string;
+  className?: string;
+}) {
   return (
     <motion.span
       className={className}
@@ -43,23 +50,16 @@ function AnimatedText({ text, className }: { text: string; className?: string })
 }
 
 export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
-  const { scrollY } = useScroll();
-  const contentOpacity = useTransform(scrollY, [0, 400], [1, 0]);
-  const contentScale = useTransform(scrollY, [0, 400], [1, 0.95]);
-
   return (
     <section className="relative flex min-h-dvh flex-col overflow-hidden px-6 pt-16">
       {/* Hero-specific background blobs */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute left-[10%] top-[15%] h-[500px] w-[500px] rounded-full bg-primary/20 blur-[140px]" />
-        <div className="absolute right-[10%] bottom-[20%] h-[400px] w-[400px] rounded-full bg-accent/20 blur-[120px]" />
+        <div className="bg-primary/20 absolute top-[15%] left-[10%] h-125 w-125 rounded-full blur-[140px]" />
+        <div className="bg-accent/20 absolute right-[10%] bottom-[20%] h-100 w-100 rounded-full blur-[120px]" />
       </div>
 
       {/* Main content with scroll fade-out */}
-      <motion.div
-        className="flex flex-1 items-center justify-center"
-        style={{ opacity: contentOpacity, scale: contentScale }}
-      >
+      <div className="flex flex-1 items-center justify-center">
         <motion.div
           className="mx-auto max-w-4xl text-center"
           variants={stagger(0.15)}
@@ -87,11 +87,11 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
                   alt={data.name}
                   width={160}
                   height={160}
-                  className="relative z-10 mx-auto rounded-full object-cover border-2 border-white/30 shadow-2xl"
+                  className="relative z-10 mx-auto rounded-full border-2 border-white/30 object-cover shadow-2xl"
                   priority
                 />
                 {/* Glow ring behind avatar */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 blur-xl scale-110" />
+                <div className="from-primary/40 to-accent/40 absolute inset-0 scale-110 rounded-full bg-gradient-to-br blur-xl" />
               </div>
             </motion.div>
           )}
@@ -101,7 +101,9 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
             className="mb-2 text-4xl font-bold tracking-tight md:mb-4 md:text-6xl"
             variants={{
               hidden: {},
-              visible: { transition: { staggerChildren: 0.03, delayChildren: 0.1 } },
+              visible: {
+                transition: { staggerChildren: 0.03, delayChildren: 0.1 },
+              },
             }}
           >
             <AnimatedText text={data.name} className="text-gradient" />
@@ -109,7 +111,7 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
 
           {/* Title */}
           <motion.h2
-            className="mb-3 text-2xl font-semibold text-muted-foreground md:mb-6 md:text-3xl"
+            className="text-muted-foreground mb-3 text-2xl font-semibold md:mb-6 md:text-3xl"
             variants={{
               hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
               visible: {
@@ -125,7 +127,7 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
 
           {/* Description */}
           <motion.p
-            className="mx-auto mb-6 max-w-2xl text-lg text-muted md:mb-10"
+            className="text-muted mx-auto mb-6 max-w-2xl text-lg md:mb-10"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -137,18 +139,14 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
           {/* CTA Button — glass with gradient border on hover */}
           {data.cvUrl && (
             <motion.div variants={fadeUp}>
-              <motion.a
+              <LinkButton
                 href={data.cvUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl glass glass-hover px-7 py-3.5 font-semibold text-foreground"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                transition={spring}
               >
                 {downloadCvLabel}
                 <Download className="h-4 w-4" strokeWidth={2} />
-              </motion.a>
+              </LinkButton>
             </motion.div>
           )}
 
@@ -157,37 +155,63 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
             className="mt-12 flex items-center justify-center gap-4"
             variants={{
               hidden: {},
-              visible: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
+              visible: {
+                transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+              },
             }}
           >
             {data.socials.github && (
               <motion.div variants={fadeUp}>
-                <IconButton href={data.socials.github} icon={<GithubIcon className="h-5 w-5" />} label="GitHub" />
+                <LinkButton
+                  href={data.socials.github}
+                  shape="square"
+                  size="small"
+                >
+                  <GithubIcon className="h-5 w-5" />
+                </LinkButton>
               </motion.div>
             )}
             {data.socials.linkedin && (
               <motion.div variants={fadeUp}>
-                <IconButton href={data.socials.linkedin} icon={<LinkedinIcon className="h-5 w-5" />} label="LinkedIn" />
+                <LinkButton
+                  href={data.socials.linkedin}
+                  shape="square"
+                  size="small"
+                >
+                  <LinkedinIcon className="h-5 w-5" />
+                </LinkButton>
               </motion.div>
             )}
             {data.socials.twitter && (
               <motion.div variants={fadeUp}>
-                <IconButton href={data.socials.twitter} icon={<XIcon className="h-5 w-5" />} label="X" />
+                <LinkButton
+                  href={data.socials.twitter}
+                  shape="square"
+                  size="small"
+                >
+                  <LinkedinIcon className="h-5 w-5" />
+                </LinkButton>
               </motion.div>
             )}
             {data.socials.email && (
               <motion.div variants={fadeUp}>
-                <IconButton href={`mailto:${data.socials.email}`} icon={<Mail className="h-5 w-5" strokeWidth={2} />} label="Email" external={false} />
+                <LinkButton
+                  href={data.socials.email}
+                  shape="square"
+                  size="small"
+                >
+                  <Mail className="h-5 w-5" />
+                </LinkButton>
               </motion.div>
             )}
           </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Scroll indicator */}
       <motion.a
         href="#about"
-        className="flex justify-center mb-12 text-muted-foreground transition-colors hover:text-foreground"
+        className="text-muted-foreground hover:text-foreground mb-12 flex justify-center transition-colors"
         aria-label="Scroll down"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
