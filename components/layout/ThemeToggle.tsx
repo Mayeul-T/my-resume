@@ -1,52 +1,46 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 import { Sun, Moon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/Button/Button";
+import { cn } from "@/lib/utils/cn";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations("theme");
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
+
+  const isDark = mounted && resolvedTheme === "dark";
 
   const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+    setTheme(isDark ? "light" : "dark");
   };
 
-  if (!mounted) {
-    return (
-      <button
-        className="relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg glass text-foreground transition-all duration-300 hover:bg-white/20 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-        aria-label={t("dark")}
-      >
-        <span className="h-5 w-5" />
-      </button>
-    );
-  }
-
   return (
-    <button
+    <Button
       onClick={toggleTheme}
-      className="relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg glass text-foreground transition-all duration-300 hover:bg-white/20 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-      aria-label={resolvedTheme === "light" ? t("dark") : t("light")}
+      shape="square"
+      size="small"
+      aria-label={isDark ? t("light") : t("dark")}
     >
       <Sun
-        className={`h-5 w-5 transition-all duration-300 ${
-          resolvedTheme === "dark" ? "rotate-90 scale-0" : "rotate-0 scale-100"
-        }`}
+        className={cn("h-5 w-5 transition-all duration-300", {
+          "scale-0 rotate-90": isDark,
+          "scale-100 rotate-0": !isDark,
+        })}
         strokeWidth={2}
       />
       <Moon
-        className={`absolute h-5 w-5 transition-all duration-300 ${
-          resolvedTheme === "dark" ? "rotate-0 scale-100" : "-rotate-90 scale-0"
-        }`}
+        className={cn("absolute h-5 w-5 transition-all duration-300", {
+          "scale-100 rotate-0": isDark,
+          "scale-0 -rotate-90": !isDark,
+        })}
         strokeWidth={2}
       />
-    </button>
+    </Button>
   );
 }
