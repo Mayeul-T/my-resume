@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Menu, X } from "lucide-react";
-import { fadeUp, stagger } from "@/lib/motion";
+import { Button } from "@/components/ui/Button/Button";
+import { cn } from "@/lib/utils/cn";
 
 interface NavItem {
   href: string;
@@ -15,10 +16,9 @@ interface NavItem {
 
 interface HeaderClientProps {
   navItems: NavItem[];
-  logo: ReactNode;
 }
 
-export function HeaderClient({ navItems, logo }: HeaderClientProps) {
+export function HeaderClient({ navItems }: HeaderClientProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -33,22 +33,21 @@ export function HeaderClient({ navItems, logo }: HeaderClientProps) {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         isScrolled
-          ? "backdrop-blur-2xl bg-background/80 dark:bg-background/70 shadow-lg shadow-black/[0.03] dark:shadow-black/20"
-          : "bg-transparent"
-      }`}
+          ? "md:bg-background/80 md:dark:bg-background/70 md:shadow-lg md:shadow-black/3 md:backdrop-blur-2xl md:dark:shadow-black/20"
+          : "bg-transparent",
+      )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        {logo}
-
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-1 md:flex">
+      <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-end px-6">
+        {/* Desktop Navigation - truly centered */}
+        <nav className="absolute inset-x-0 hidden justify-center gap-1 md:flex">
           {navItems.map((item) => (
             <a
               key={item.key}
               href={item.href}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:text-foreground hover:bg-white/20 dark:hover:bg-white/10"
+              className="text-muted-foreground hover:text-foreground rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 hover:bg-white/20 dark:hover:bg-white/10"
             >
               {item.label}
             </a>
@@ -60,9 +59,11 @@ export function HeaderClient({ navItems, logo }: HeaderClientProps) {
           <LanguageSwitcher />
           <ThemeToggle />
 
-          <button
+          <Button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg glass text-foreground transition-all duration-300 hover:bg-white/20 dark:hover:bg-white/10 md:hidden"
+            size="small"
+            shape="square"
+            className="relative z-10 md:hidden"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -72,7 +73,7 @@ export function HeaderClient({ navItems, logo }: HeaderClientProps) {
             ) : (
               <Menu className="h-5 w-5" strokeWidth={2} />
             )}
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -81,30 +82,32 @@ export function HeaderClient({ navItems, logo }: HeaderClientProps) {
         {isMobileMenuOpen && (
           <motion.nav
             id="mobile-menu"
-            className="glass border-t border-border md:hidden overflow-hidden"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="glass-frost border-border mx-6 mb-6 rounded-lg border-t md:hidden"
+            style={{ transformOrigin: "calc(100% - 28px) 0px" }}
+            initial={{ scale: 0, y: -16 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0, y: -16 }}
+            transition={{
+              y: { duration: 0.15, ease: "easeOut" },
+              scale: {
+                type: "spring",
+                damping: 22,
+                stiffness: 300,
+              },
+            }}
           >
-            <motion.div
-              className="flex flex-col gap-1 px-6 py-4"
-              variants={stagger(0.05)}
-              initial="hidden"
-              animate="visible"
-            >
+            <div className="flex flex-col gap-1 px-6 py-4">
               {navItems.map((item) => (
-                <motion.a
+                <a
                   key={item.key}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  variants={fadeUp}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/20 dark:hover:bg-white/10 hover:text-foreground"
+                  className="cursor-pointer text-muted-foreground hover:text-foreground rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-white/20 dark:hover:bg-white/10"
                 >
                   {item.label}
-                </motion.a>
+                </a>
               ))}
-            </motion.div>
+            </div>
           </motion.nav>
         )}
       </AnimatePresence>
