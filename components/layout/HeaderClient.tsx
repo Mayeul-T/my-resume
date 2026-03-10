@@ -82,8 +82,8 @@ export function HeaderClient({ navItems }: HeaderClientProps) {
         {isMobileMenuOpen && (
           <motion.nav
             id="mobile-menu"
-            className="glass-frost border-border mx-6 mb-6 rounded-lg border-t md:hidden"
-            style={{ transformOrigin: "calc(100% - 28px) 0px" }}
+            className="glass-blur border-border mx-6 mb-6 rounded-lg border-t md:hidden"
+            style={{ transformOrigin: "calc(100% - 1.75em) 0em" }}
             initial={{ scale: 0, y: -16 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0, y: -16 }}
@@ -102,7 +102,7 @@ export function HeaderClient({ navItems }: HeaderClientProps) {
                   key={item.key}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="cursor-pointer text-muted-foreground hover:text-foreground rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-white/20 dark:hover:bg-white/10"
+                  className="text-muted-foreground hover:text-foreground cursor-pointer rounded-lg px-3 py-3 text-lg font-medium transition-colors hover:bg-white/20 dark:hover:bg-white/10"
                 >
                   {item.label}
                 </a>

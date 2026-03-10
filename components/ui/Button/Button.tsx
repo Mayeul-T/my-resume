@@ -1,7 +1,7 @@
 import React from "react";
 
 export const buttonVariantsClassname : {glass: string} = {
-    glass: 'inline-flex items-center glass glass-hover font-semibold text-foreground'
+    glass: 'inline-flex items-center glass-blur glass-hover font-semibold text-foreground'
 }
 
 export type ButtonVariant = keyof typeof buttonVariantsClassname;

@@ -54,8 +54,8 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
     <section className="relative flex min-h-dvh flex-col overflow-hidden px-6 pt-16">
       {/* Hero-specific background blobs */}
       <div className="absolute inset-0 -z-10">
-        <div className="bg-primary/20 absolute top-[15%] left-[10%] h-125 w-125 rounded-full blur-[140px]" />
-        <div className="bg-accent/20 absolute right-[10%] bottom-[20%] h-100 w-100 rounded-full blur-[120px]" />
+        <div className="bg-primary/20 absolute top-[15%] left-[10%] h-125 w-125 rounded-full blur-[8.75em]" />
+        <div className="bg-accent/20 absolute right-[10%] bottom-[20%] h-100 w-100 rounded-full blur-[7.5em]" />
       </div>
 
       {/* Main content with scroll fade-out */}
@@ -72,11 +72,11 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
             <motion.div
               className="mx-auto mb-8"
               variants={{
-                hidden: { opacity: 0, scale: 0.5, filter: "blur(20px)" },
+                hidden: { opacity: 0, scale: 0.5, filter: "blur(1.25em)" },
                 visible: {
                   opacity: 1,
                   scale: 1,
-                  filter: "blur(0px)",
+                  filter: "blur(0em)",
                   transition: { type: "spring", stiffness: 200, damping: 20 },
                 },
               }}
@@ -113,11 +113,11 @@ export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
           <motion.h2
             className="text-muted-foreground mb-3 text-2xl font-semibold md:mb-6 md:text-3xl"
             variants={{
-              hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
+              hidden: { opacity: 0, y: 30, filter: "blur(0.625em)" },
               visible: {
                 opacity: 1,
                 y: 0,
-                filter: "blur(0px)",
+                filter: "blur(0em)",
                 transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
               },
             }}

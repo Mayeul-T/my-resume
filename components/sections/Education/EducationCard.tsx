@@ -33,7 +33,7 @@ export function EducationCard({ item, index }: EducationCardProps) {
         </div>
 
         {/* Content card — clean glass, no border-top */}
-        <div className="group flex-1 rounded-2xl glass-frost glass-hover p-6 md:p-8">
+        <div className="group flex-1 rounded-2xl glass-blur glass-hover p-6 md:p-8">
           {/* Mobile icon */}
           <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/20 md:hidden">
             <GraduationCap className="h-6 w-6 text-white" strokeWidth={2} />

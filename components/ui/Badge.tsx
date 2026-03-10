@@ -12,8 +12,8 @@ export function Badge({
   const baseClasses = "rounded-full px-3 py-1 text-xs font-medium";
   const variantClasses =
     variant === "default"
-      ? "glass text-secondary-foreground"
-      : "glass text-muted-foreground";
+      ? "text-secondary-foreground"
+      : "text-muted-foreground";
 
   return (
     <span className={`${baseClasses} ${variantClasses} ${className}`}>

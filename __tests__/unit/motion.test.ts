@@ -69,7 +69,7 @@ describe('animation variants', () => {
 
   it('blurIn visible removes blur', () => {
     const visible = blurIn.visible as { filter: string }
-    expect(visible.filter).toBe('blur(0px)')
+    expect(visible.filter).toBe('blur(0em)')
   })
 
   it('scalePop hidden starts at scale 0', () => {

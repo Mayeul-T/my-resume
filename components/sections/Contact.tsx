@@ -44,7 +44,7 @@ export function Contact() {
   };
 
   const inputClasses =
-    "w-full rounded-xl glass px-4 py-3 text-foreground placeholder-muted transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:shadow-lg focus:shadow-primary/10";
+    "w-full rounded-xl glass-blur px-4 py-3 text-foreground placeholder-muted transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:shadow-lg focus:shadow-primary/10";
 
   return (
     <Section id="contact" title={t("title")}>
@@ -61,7 +61,7 @@ export function Contact() {
 
         <motion.form
           onSubmit={handleSubmit}
-          className="space-y-6 rounded-2xl glass-frost p-6 md:p-8"
+          className="space-y-6 rounded-2xl glass-blur p-6 md:p-8"
           variants={stagger(0.1, 0.1)}
           initial="hidden"
           whileInView="visible"

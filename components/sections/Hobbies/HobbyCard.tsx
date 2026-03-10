@@ -18,7 +18,7 @@ interface HobbyCardProps {
 export function HobbyCard({ hobby, index }: HobbyCardProps) {
   return (
     <motion.div variants={blurIn}>
-      <div className="group relative h-full overflow-hidden rounded-2xl glass-frost glass-hover p-6">
+      <div className="group relative h-full overflow-hidden rounded-2xl glass-blur glass-hover p-6">
         {/* Subtle gradient on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 

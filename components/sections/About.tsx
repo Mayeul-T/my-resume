@@ -45,7 +45,7 @@ export function About({ data }: AboutProps) {
             <motion.div
               key={index}
               variants={fadeUp}
-              className="flex items-start gap-4 rounded-xl glass-frost glass-hover p-4"
+              className="flex items-start gap-4 rounded-xl glass-blur glass-hover p-4"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/20">
                 <Check className="h-5 w-5" strokeWidth={2.5} />

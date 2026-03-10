@@ -53,20 +53,20 @@ export const scalePop: Variants = {
 
 // Dramatic variants — blur + scale for real wow factor
 export const blurIn: Variants = {
-  hidden: { opacity: 0, filter: "blur(12px)", y: 30 },
+  hidden: { opacity: 0, filter: "blur(0.75em)", y: 30 },
   visible: {
     opacity: 1,
-    filter: "blur(0px)",
+    filter: "blur(0em)",
     y: 0,
     transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
   },
 };
 
 export const blurScale: Variants = {
-  hidden: { opacity: 0, filter: "blur(16px)", scale: 0.92 },
+  hidden: { opacity: 0, filter: "blur(1em)", scale: 0.92 },
   visible: {
     opacity: 1,
-    filter: "blur(0px)",
+    filter: "blur(0em)",
     scale: 1,
     transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] },
   },
