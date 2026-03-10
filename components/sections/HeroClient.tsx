@@ -51,7 +51,7 @@ function AnimatedText({
 
 export function HeroClient({ data, downloadCvLabel }: HeroClientProps) {
   return (
-    <section className="relative flex min-h-dvh flex-col overflow-hidden px-6 pt-16">
+    <section className="relative flex min-h-svh flex-col overflow-hidden px-6 pt-16">
       {/* Hero-specific background blobs */}
       <div className="absolute inset-0 -z-10">
         <div className="bg-primary/20 absolute top-[15%] left-[10%] h-125 w-125 rounded-full blur-[8.75em]" />
