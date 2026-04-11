@@ -9,10 +9,6 @@ import { HtmlLang } from "@/components/layout/HtmlLang";
 import { getResumeData } from "@/lib/data/resume";
 import { BackgroundDecorations } from "@/components/layout/BackgroundDecorations";
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
-
 interface GenerateMetadataProps {
   params: Promise<{ locale: string }>;
 }

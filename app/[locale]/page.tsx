@@ -11,6 +11,8 @@ import { Hobbies } from "@/components/sections/Hobbies";
 import { Contact } from "@/components/sections/Contact";
 import { getResumeData } from "@/lib/data/resume";
 
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   params: Promise<{ locale: string }>;
 }

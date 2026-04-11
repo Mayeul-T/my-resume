@@ -60,15 +60,8 @@ jobs:
         id: image
         run: echo "name=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
 
-      - name: Create storage files from variables
-        env:
-          RESUME_EN: ${{ vars.RESUME_EN }}
-          RESUME_FR: ${{ vars.RESUME_FR }}
-        run: |
-          mkdir -p storage/assets
-          echo "$RESUME_EN" > storage/resume.en.yml
-          echo "$RESUME_FR" > storage/resume.fr.yml
-          # Note: Images are managed via mounted volume on VPS (/opt/my-resume/storage/assets/)
+      - name: Copy storage example files
+        run: cp -r storage.example storage
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
