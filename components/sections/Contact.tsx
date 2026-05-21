@@ -9,7 +9,9 @@ import { fadeUp, blurIn, stagger, viewportOnce, spring } from "@/lib/motion";
 
 export function Contact() {
   const t = useTranslations("contact");
-  const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [formState, setFormState] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,7 +37,7 @@ export function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -54,21 +56,24 @@ export function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mb-8 text-center text-lg text-muted-foreground"
+          className="text-muted-foreground mb-8 text-center text-lg"
         >
           {t("subtitle")}
         </motion.p>
 
         <motion.form
           onSubmit={handleSubmit}
-          className="space-y-6 rounded-2xl glass-blur p-6 md:p-8"
+          className="glass space-y-6 rounded-2xl p-6 md:p-8"
           variants={stagger(0.1, 0.1)}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
         >
           <motion.div variants={fadeUp}>
-            <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
+            <label
+              htmlFor="name"
+              className="text-foreground mb-2 block text-sm font-medium"
+            >
               {t("name")}
             </label>
             <input
@@ -79,12 +84,15 @@ export function Contact() {
               onChange={handleChange}
               required
               className={inputClasses}
-              placeholder="John Doe"
+              placeholder={t("namePlaceholder")}
             />
           </motion.div>
 
           <motion.div variants={fadeUp}>
-            <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
+            <label
+              htmlFor="email"
+              className="text-foreground mb-2 block text-sm font-medium"
+            >
               {t("email")}
             </label>
             <input
@@ -95,12 +103,15 @@ export function Contact() {
               onChange={handleChange}
               required
               className={inputClasses}
-              placeholder="john@example.com"
+              placeholder={t("emailPlaceholder")}
             />
           </motion.div>
 
           <motion.div variants={fadeUp}>
-            <label htmlFor="message" className="mb-2 block text-sm font-medium text-foreground">
+            <label
+              htmlFor="message"
+              className="text-foreground mb-2 block text-sm font-medium"
+            >
               {t("message")}
             </label>
             <textarea
@@ -111,7 +122,7 @@ export function Contact() {
               required
               rows={5}
               className={`resize-none ${inputClasses}`}
-              placeholder="Your message..."
+              placeholder={t("messagePlaceholder")}
             />
           </motion.div>
 
@@ -119,7 +130,7 @@ export function Contact() {
             <motion.button
               type="submit"
               disabled={formState === "loading"}
-              className="w-full rounded-xl bg-gradient-to-r from-primary to-accent px-6 py-3.5 font-semibold text-white shadow-lg shadow-primary/20 transition-shadow hover:shadow-xl hover:shadow-primary/30 disabled:cursor-not-allowed disabled:opacity-50"
+              className="from-primary to-accent shadow-primary/20 hover:shadow-primary/30 w-full rounded-xl bg-gradient-to-r px-6 py-3.5 font-semibold text-white shadow-lg transition-shadow hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-50"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={spring}
@@ -129,12 +140,12 @@ export function Contact() {
           </motion.div>
 
           {formState === "success" && (
-            <p className="text-center text-sm font-medium text-success">
+            <p className="text-success text-center text-sm font-medium">
               {t("success")}
             </p>
           )}
           {formState === "error" && (
-            <p className="text-center text-sm font-medium text-error">
+            <p className="text-error text-center text-sm font-medium">
               {t("error")}
             </p>
           )}

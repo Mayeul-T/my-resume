@@ -34,8 +34,11 @@ contact:
   title: Contact
   subtitle: Travaillons ensemble
   name: Nom
+  namePlaceholder: Jean Dupont
   email: Email
+  emailPlaceholder: jean@exemple.com
   message: Message
+  messagePlaceholder: Votre message...
   send: Envoyer
   sending: Envoi en cours...
   success: Message envoyé avec succès !
