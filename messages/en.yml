@@ -34,8 +34,11 @@ contact:
   title: Contact
   subtitle: Let's work together
   name: Name
+  namePlaceholder: John Doe
   email: Email
+  emailPlaceholder: john@example.com
   message: Message
+  messagePlaceholder: Your message...
   send: Send Message
   sending: Sending...
   success: Message sent successfully!
